@@ -88,17 +88,37 @@ function movePillConsumer(e) {
     console.log(e.keyCode);
     switch(e.keyCode) {
         
+        //left - keyCode 37
         case 37:
-            if (pillConsumerCurrentIndex % width !== 0) pillConsumerCurrentIndex -= 1;
+            //check if the current index location of pillCons is divisible to 0 by the width 28
+            //AND doesn't have a class of 'wall' or 'ghost-house'
+            if (pillConsumerCurrentIndex % width !== 0 && !squares[pillConsumerCurrentIndex -1].classList.contains('wall') 
+            && !squares[pillConsumerCurrentIndex -1].classList.contains('ghost-house'))
+            pillConsumerCurrentIndex -= 1;
             break;
+        //up - keyCode 38
         case 38:
-            if (pillConsumerCurrentIndex - width >= 0) pillConsumerCurrentIndex -= width;
+            //check if the current index location of pillCons minus width is less than or equal to 0
+            //AND doesn't have a class of 'wall' or 'ghost-house'
+            if (pillConsumerCurrentIndex - width >= 0 && !squares[pillConsumerCurrentIndex - width].classList.contains('wall')
+            && !squares[pillConsumerCurrentIndex - width].classList.contains('ghost-house'))
+            pillConsumerCurrentIndex -= width;
             break;
+        //right - keyCode 39
         case 39:
-            if (pillConsumerCurrentIndex % width < width -1) pillConsumerCurrentIndex += 1;
+            //check if the current index location of pillCons is divisible by or less than the width minus one
+            //AND doesn't have a class of 'wall' or 'ghost-house'
+            if (pillConsumerCurrentIndex % width < width -1 && !squares[pillConsumerCurrentIndex +1].classList.contains('wall')
+            && !squares[pillConsumerCurrentIndex + 1].classList.contains('ghost-house'))
+            pillConsumerCurrentIndex += 1;
             break;
+        //down - keyCode 40
         case 40:
-            if (pillConsumerCurrentIndex + width < width * width) pillConsumerCurrentIndex += width;
+            //check if the current index location of pillCons plus width is less than or equal to width X width
+            //AND doesn't have a class of 'wall' or 'ghost-house'
+            if (pillConsumerCurrentIndex + width < width * width && !squares[pillConsumerCurrentIndex + width].classList.contains('wall')
+            && !squares[pillConsumerCurrentIndex + width].classList.contains('ghost-house'))
+            pillConsumerCurrentIndex += width;
             break;
     }
     squares[pillConsumerCurrentIndex].classList.add('pill-consumer');
