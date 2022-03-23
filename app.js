@@ -75,4 +75,11 @@ function createMap() {
 
 createMap()
 
-})
+//Setup pill consumers starting position in the array
+let pillConsumerCurrentIndex = 489;
+//Add the css styling to the array position index
+squares[pillConsumerCurrentIndex].classList.add('pill-consumer');
+
+
+});
+
