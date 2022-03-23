@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const grid = document.querySelector(".grid");
-    const points = document.getElementById("points");
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.querySelector('.grid');
+    const points = document.getElementById('points');
     const width = 28;
 
     //Layout key:
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
         1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
       ]
-});
+
 
 const squares = [];
 
@@ -48,10 +48,31 @@ function createMap() {
     //loop over the entire length of the layout
     for (let i = 0; i < layout.length; i++) {
     //create a div for each element
-        const square = document.createElement("div");
+        const square = document.createElement('div')
     //add the divs - (squares) to the grid
-        grid.appendChild(square);
+        grid.appendChild(square)
     //add the dives to a new array
-        squares.push(grid);
+        squares.push(square)
+    //Use the layout to populate the board with the css styling
+        //Layout key:
+        // 0 - .dots
+        // 1 - .wall
+        // 2 - .ghost-house
+        // 3 - .powerpill
+        // 4 - .empty
+        if (layout[i] === 0) {
+            squares[i].classList.add('dots')
+        } else if (layout[i] === 1) {
+            squares[i].classList.add('wall')
+        } else if (layout[i] === 2) {
+            squares[i].classList.add('ghost-house')
+        } else if (layout[i] === 3) {
+            squares[i].classList.add('powerpill')
+        }
     }
 }
+
+
+createMap()
+
+})
