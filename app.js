@@ -83,10 +83,10 @@ squares[pillConsumerCurrentIndex].classList.add('pill-consumer');
 //Movement
 function movePillConsumer(e) {
     //remove PCCI from the current grid section
-    squares[pillConsumerCurrentIndex].remove('pill-consumer');
+    squares[pillConsumerCurrentIndex].classList.remove('pill-consumer');
     //use a switch to decide which new index to move to
-    console.log(e.currentTarget.keycode)
-    switch(e.currentTarget.keyCode) {
+    console.log(e.keyCode);
+    switch(e.keyCode) {
         
         case 37:
             if (pillConsumerCurrentIndex % width !== 0) pillConsumerCurrentIndex -= 1;
@@ -110,6 +110,5 @@ function movePillConsumer(e) {
     }
     
     document.addEventListener('keyup', movePillConsumer)
-    console.log()
 });
 
