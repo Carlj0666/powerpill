@@ -90,7 +90,7 @@ function movePillConsumer(e) {
     switch(currentKey) {
         //left - keyCode 37
         case 37:
-            //check if the current index location of pillCons is divisible to 0 by the width 28
+            //check if the current index location of pillCons is divisible to 0 by the (width = 28 divs)
             //AND doesn't have a class of 'wall' or 'ghost-house'
             if (pillConsumerCurrentIndex % width !== 0 && !squares[pillConsumerCurrentIndex -1].classList.contains('wall') 
             && !squares[pillConsumerCurrentIndex -1].classList.contains('ghost-house'))
