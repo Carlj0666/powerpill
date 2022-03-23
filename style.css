@@ -13,12 +13,14 @@
 
 .dots {
     background-color: black;
-    border: 5px solid greenyellow;
+    border: 4px solid greenyellow;
+    /* border-radius: px; */
+    border-block-color: greenyellow;
     box-sizing: border-box;
 }
 
 .wall {
-    background-color:darkorange;
+    background-color:black;
 }
 
 .powerpill {
