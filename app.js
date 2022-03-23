@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const width = 28;
 
     //Layout key:
-        // 0 - snacks
+        // 0 - dots
         // 1 - wall
         // 2 - ghost-house
         // 3 - POWERPILL

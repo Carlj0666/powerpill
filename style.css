@@ -5,3 +5,23 @@
     height: 560px;
     border: solid black;
 }
+
+.grid div {
+    width: 20px;
+    height: 20px;
+}
+
+.dots {
+    background-color: black;
+    border: 5px solid greenyellow;
+    box-sizing: border-box;
+}
+
+.wall {
+    background-color:darkorange;
+}
+
+.powerpill {
+    background-color: greenyellow;
+    border-radius: 10px;
+}
