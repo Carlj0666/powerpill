@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // 2 - ghost-house
         // 3 - POWERPILL
         // 4 - empty
+
     const layout = [
         1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
         1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
@@ -40,3 +41,17 @@ document.addEventListener("DOMContentLoaded", () => {
         1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
       ]
 });
+
+const squares = [];
+
+function createMap() {
+    //loop over the entire length of the layout
+    for (let i = 0; i < layout.length; i++) {
+    //create a div for each element
+        const square = document.createElement("div");
+    //add the divs - (squares) to the grid
+        grid.appendChild(square);
+    //add the dives to a new array
+        squares.push(grid);
+    }
+}
