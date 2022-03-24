@@ -91,11 +91,17 @@ function movePillConsumer(e) {
         //left - keyCode 37
         case 37:
             //check if the current index location of pillCons is divisible to 0 by the (width = 28 divs)
-            //AND doesn't have a class of 'wall' or 'ghost-house'
+            //AND doesn't have a class of 'wall' AND 'ghost-house'
             if (pillConsumerCurrentIndex % width !== 0 && !squares[pillConsumerCurrentIndex -1].classList.contains('wall') 
             && !squares[pillConsumerCurrentIndex -1].classList.contains('ghost-house'))
-            pillConsumerCurrentIndex -= 1;
-            break;
+            pillConsumerCurrentIndex -= 1
+            
+
+        //check if pillConsumer is at the Left Exit
+            if ((pillConsumerCurrentIndex -1) === 363) {
+                pillConsumerCurrentIndex = 391
+            }
+            break
 
         //up - keyCode 38
         case 38:
@@ -103,8 +109,8 @@ function movePillConsumer(e) {
             //AND doesn't have a class of 'wall' or 'ghost-house'
             if (pillConsumerCurrentIndex - width >= 0 && !squares[pillConsumerCurrentIndex - width].classList.contains('wall')
             && !squares[pillConsumerCurrentIndex - width].classList.contains('ghost-house'))
-            pillConsumerCurrentIndex -= width;
-            break;
+            pillConsumerCurrentIndex -= width
+            break
 
         //right - keyCode 39
         case 39:
@@ -112,8 +118,13 @@ function movePillConsumer(e) {
             //AND doesn't have a class of 'wall' or 'ghost-house'
             if (pillConsumerCurrentIndex % width < width -1 && !squares[pillConsumerCurrentIndex +1].classList.contains('wall')
             && !squares[pillConsumerCurrentIndex + 1].classList.contains('ghost-house'))
-            pillConsumerCurrentIndex += 1;
-            break;
+            pillConsumerCurrentIndex += 1
+
+            if ((pillConsumerCurrentIndex +1) === 392) {
+                pillConsumerCurrentIndex = 364
+            }
+
+            break
 
         //down - keyCode 40
         case 40:
@@ -121,8 +132,8 @@ function movePillConsumer(e) {
             //AND doesn't have a class of 'wall' or 'ghost-house'
             if (pillConsumerCurrentIndex + width < width * width && !squares[pillConsumerCurrentIndex + width].classList.contains('wall')
             && !squares[pillConsumerCurrentIndex + width].classList.contains('ghost-house'))
-            pillConsumerCurrentIndex += width;
-            break;
+            pillConsumerCurrentIndex += width
+            break
     }
     squares[pillConsumerCurrentIndex].classList.add('pill-consumer');
 
