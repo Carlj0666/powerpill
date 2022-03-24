@@ -18,17 +18,13 @@
     border-radius: 10px;
     border-block-color: greenyellow;
     box-sizing: border-box;
-
-    /* background-color: green;   
-    border: 5px solid white;
-    box-sizing: border-box; */
 }
 
 .wall {
     background-color:black;
 }
 
-.powerpill {
+.power-pill {
     background-color: black;
     border-radius: 10px;
 }

@@ -69,7 +69,7 @@ function createMap() {
         } else if (layout[i] === 2) {
             squares[i].classList.add('ghost-house');
         } else if (layout[i] === 3) {
-            squares[i].classList.add('powerpill');
+            squares[i].classList.add('power-pill');
         }
     }
 }
@@ -138,7 +138,8 @@ function movePillConsumer(e) {
     squares[pillConsumerCurrentIndex].classList.add('pill-consumer');
 
     consumeDots()
-    //pPillConsume()
+    powerPillConsume()
+    //removeScaries()
     //checkGameOver()
     //checkGameWin()
 
@@ -157,5 +158,15 @@ function consumeDots() {
         squares[pillConsumerCurrentIndex].classList.remove('dots')
     }
 }
+
+function powerPillConsume() {
+    if (squares[pillConsumerCurrentIndex].classList.contains('power-pill')) {
+        points+=3
+        pointsDisplay.innerHTML = points
+        squares[pillConsumerCurrentIndex].classList.remove('power-pill')
+        //removeScaries()
+    }
+}
+
 
 })
