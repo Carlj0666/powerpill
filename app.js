@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const points = document.getElementById('points');
-    const grid = document.querySelector('.grid');
+    const pointsDisplay = document.getElementById('points');
     const width = 28;
+    let points = 0;
+    const grid = document.querySelector('.grid');
 
     //Layout key:
         // 0 - dots
@@ -123,7 +124,6 @@ function movePillConsumer(e) {
             if ((pillConsumerCurrentIndex +1) === 392) {
                 pillConsumerCurrentIndex = 364
             }
-
             break
 
         //down - keyCode 40
@@ -137,12 +137,25 @@ function movePillConsumer(e) {
     }
     squares[pillConsumerCurrentIndex].classList.add('pill-consumer');
 
-    //dotDelete()
+    consumeDots()
     //pPillConsume()
     //checkGameOver()
     //checkGameWin()
-    }
-    
-    document.addEventListener('keyup', movePillConsumer);
-});
 
+    }
+
+    document.addEventListener('keyup', movePillConsumer)
+
+//Dot consume:
+//make dots dissappear
+//add 1 to points for each dot that is "consumed"
+
+function consumeDots() {
+    if (squares[pillConsumerCurrentIndex].classList.contains('dots')) {
+        points ++
+        pointsDisplay.innerHTML = points
+        squares[pillConsumerCurrentIndex].classList.remove('dots')
+    }
+}
+
+})
