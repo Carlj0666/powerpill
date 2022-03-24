@@ -45,12 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
 const squares = [];
 
 function createMap() {
-    //loop over the entire length of the layout
+    //loop over the entire length of the layout array
     for (let i = 0; i < layout.length; i++) {
     //create a div for each element
         const square = document.createElement('div');
     //add the divs - (squares) to the grid
         grid.appendChild(square);
+        console.log(grid)
     //add the dives to a new array
         squares.push(square);
     //Use the layout to populate the board with the css styling
@@ -71,7 +72,6 @@ function createMap() {
         }
     }
 }
-
 
 createMap()
 
@@ -96,6 +96,7 @@ function movePillConsumer(e) {
             && !squares[pillConsumerCurrentIndex -1].classList.contains('ghost-house'))
             pillConsumerCurrentIndex -= 1;
             break;
+
         //up - keyCode 38
         case 38:
             //check if the current index location of pillCons minus width is less than or equal to 0
@@ -104,6 +105,7 @@ function movePillConsumer(e) {
             && !squares[pillConsumerCurrentIndex - width].classList.contains('ghost-house'))
             pillConsumerCurrentIndex -= width;
             break;
+
         //right - keyCode 39
         case 39:
             //check if the current index location of pillCons is divisible by or less than the width minus one
@@ -112,6 +114,7 @@ function movePillConsumer(e) {
             && !squares[pillConsumerCurrentIndex + 1].classList.contains('ghost-house'))
             pillConsumerCurrentIndex += 1;
             break;
+
         //down - keyCode 40
         case 40:
             //check if the current index location of pillCons plus width is less than or equal to width X width
@@ -123,12 +126,12 @@ function movePillConsumer(e) {
     }
     squares[pillConsumerCurrentIndex].classList.add('pill-consumer');
 
-    //pillKill()
-    //pillConsume()
+    //dotDelete()
+    //pPillConsume()
     //checkGameOver()
     //checkGameWin()
     }
     
-    document.addEventListener('keyup', movePillConsumer)
+    document.addEventListener('keyup', movePillConsumer);
 });
 
