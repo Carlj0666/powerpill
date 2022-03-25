@@ -139,7 +139,6 @@ function movePillConsumer(e) {
 
     consumeDots();
     powerPillConsume();
-    //removeScaries()
     //checkGameOver()
     //checkGameWin()
 
