@@ -5,10 +5,10 @@ I'd love to incorporate some sound into this, perhaps based on movement, or some
 
 ## To Do
 1) Remove dots on overlap
-2) Make "ghosts"
-3) Ghost behavior
+2) Make "scariess"
+3) scaries behavior
 4) Powerpill effects
-5) Ghost busting
+5) scaries busting
 
 
 

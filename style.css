@@ -4,7 +4,6 @@
     width: 560px;
     height: 560px;
     border: solid black;
-    
 }
 
 .grid div {
@@ -29,8 +28,35 @@
     border-radius: 10px;
 }
 
+.pete {
+    background-color: olivedrab;
+    border-radius: 0px;
+}
+
+.josh {
+    background-color: green;
+    border-radius: 0px;
+}
+
+.kenny {
+    background-color:forestgreen;
+    border-radius: 0px;
+}
+
+.johnny {
+    background-color: lawngreen;
+    border-radius: 0px;
+}
+
+.freaked-wraith {
+    background-color:mediumvioletred;
+    border: 0px;
+}
+
+
 .pill-consumer {
     background-color: cornflowerblue;
 
     border-radius: 10px;
 }
+

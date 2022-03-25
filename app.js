@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //Layout key:
         // 0 - dots
         // 1 - wall
-        // 2 - ghost-house
+        // 2 - wraith-house
         // 3 - POWERPILL
         // 4 - empty
 
@@ -59,7 +59,7 @@ function createMap() {
         //Layout key:
         // 0 - .dots
         // 1 - .wall
-        // 2 - .ghost-house
+        // 2 - .wraith-house
         // 3 - .powerpill
         // 4 - .empty
         if (layout[i] === 0) {
@@ -67,7 +67,8 @@ function createMap() {
         } else if (layout[i] === 1) {
             squares[i].classList.add('wall');
         } else if (layout[i] === 2) {
-            squares[i].classList.add('ghost-house');
+            squares[i].classList.add('wraith-house');
+            // squares[i].classList.add('wraith')
         } else if (layout[i] === 3) {
             squares[i].classList.add('power-pill');
         }
@@ -92,9 +93,9 @@ function movePillConsumer(e) {
         //left - keyCode 37
         case 37:
             //check if the current index location of pillCons is divisible to 0 by the (width = 28 divs)
-            //AND doesn't have a class of 'wall' AND 'ghost-house'
+            //AND doesn't have a class of 'wall' AND 'wraith-house'
             if (pillConsumerCurrentIndex % width !== 0 && !squares[pillConsumerCurrentIndex -1].classList.contains('wall') 
-            && !squares[pillConsumerCurrentIndex -1].classList.contains('ghost-house'))
+            && !squares[pillConsumerCurrentIndex -1].classList.contains('wraith-house'))
             pillConsumerCurrentIndex -= 1
             
 
@@ -107,18 +108,18 @@ function movePillConsumer(e) {
         //up - keyCode 38
         case 38:
             //check if the current index location of pillCons minus width is less than or equal to 0
-            //AND doesn't have a class of 'wall' or 'ghost-house'
+            //AND doesn't have a class of 'wall' or 'wraith-house'
             if (pillConsumerCurrentIndex - width >= 0 && !squares[pillConsumerCurrentIndex - width].classList.contains('wall')
-            && !squares[pillConsumerCurrentIndex - width].classList.contains('ghost-house'))
+            && !squares[pillConsumerCurrentIndex - width].classList.contains('wraith-house'))
             pillConsumerCurrentIndex -= width
             break
 
         //right - keyCode 39
         case 39:
             //check if the current index location of pillCons is divisible by or less than the width minus one
-            //AND doesn't have a class of 'wall' or 'ghost-house'
+            //AND doesn't have a class of 'wall' or 'wraith-house'
             if (pillConsumerCurrentIndex % width < width -1 && !squares[pillConsumerCurrentIndex +1].classList.contains('wall')
-            && !squares[pillConsumerCurrentIndex + 1].classList.contains('ghost-house'))
+            && !squares[pillConsumerCurrentIndex + 1].classList.contains('wraith-house'))
             pillConsumerCurrentIndex += 1
 
             if ((pillConsumerCurrentIndex +1) === 392) {
@@ -129,9 +130,9 @@ function movePillConsumer(e) {
         //down - keyCode 40
         case 40:
             //check if the current index location of pillCons plus width is less than or equal to width X width
-            //AND doesn't have a class of 'wall' or 'ghost-house'
+            //AND doesn't have a class of 'wall' or 'wraith-house'
             if (pillConsumerCurrentIndex + width < width * width && !squares[pillConsumerCurrentIndex + width].classList.contains('wall')
-            && !squares[pillConsumerCurrentIndex + width].classList.contains('ghost-house'))
+            && !squares[pillConsumerCurrentIndex + width].classList.contains('wraith-house'))
             pillConsumerCurrentIndex += width
             break
     }
@@ -151,22 +152,44 @@ function movePillConsumer(e) {
 //make dots dissappear
 //add 1 to points for each dot that is "consumed"
 
-function consumeDots() {
-    if (squares[pillConsumerCurrentIndex].classList.contains('dots')) {
-        points ++
-        pointsDisplay.innerHTML = points
-        squares[pillConsumerCurrentIndex].classList.remove('dots')
+    function consumeDots() {
+        if (squares[pillConsumerCurrentIndex].classList.contains('dots')) {
+            points ++
+            pointsDisplay.innerHTML = points
+            squares[pillConsumerCurrentIndex].classList.remove('dots')
+        }
     }
-}
 
-function powerPillConsume() {
-    if (squares[pillConsumerCurrentIndex].classList.contains('power-pill')) {
-        points+=3
-        pointsDisplay.innerHTML = points
-        squares[pillConsumerCurrentIndex].classList.remove('power-pill')
-        //removeScaries()
+//Power Pill consume:
+//make dots dissappear
+//add 3 to points for each dot that is "consumed"
+//Remove scaries for power pill influenced pill consumer overlap ;
+    function powerPillConsume() {
+        if (squares[pillConsumerCurrentIndex].classList.contains('power-pill')) {
+            points+=3
+            pointsDisplay.innerHTML = points
+            squares[pillConsumerCurrentIndex].classList.remove('power-pill')
+            
+        }
     }
-}
+
+//Wraith
+    class Wraith {
+        constructor(className, startIndex, speed) {
+            this.classname = className
+            this.startIndex = startIndex
+            this.speed = speed
+            this.timerId = NaN
+        }
+    }
+
+    wraiths = [
+        new Wraith('pete', 348, 250),
+        new Wraith('josh', 379, 250),
+        new Wraith('kenny', 352, 500),
+        new Wraith('johnny', 376, 400)
+    ]
+   
 
 
 })
