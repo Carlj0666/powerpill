@@ -247,7 +247,16 @@ function movePillConsumer(e) {
         }
 
         //Check if the wraith is freaked and contains the pill consumer
-        
+        if (wraith.isFreaked && squares[wraith.currentIndex].classList.contains('pill-consumer')) {
+            //remove the wraith/freaked wraith at the index classNames
+            squares[wraith.currentIndex].classList.remove(wraith.className, 'wraith', 'freaked-wraith')
+            //reset to the starting index for the wraith
+            wraith.currentIndex = wraith.startIndex
+            //Add to the points
+            points += 93
+            //Re-add the classlist class name to the wraith
+            squares[wraith.currentIndex].classList.add(wraith.className, 'wraith')
+        }
         //if it does remove the wraith and add points
 
     }, wraith.speed)
