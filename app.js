@@ -52,7 +52,6 @@ function createMap() {
         const square = document.createElement('div');
     //add the divs - (squares) to the grid
         grid.appendChild(square);
-        console.log(grid)
     //add the dives to a new array
         squares.push(square);
     //Use the layout to populate the board with the css styling
@@ -173,23 +172,29 @@ function movePillConsumer(e) {
         }
     }
 
-//Wraith
+//Wraith Class
     class Wraith {
         constructor(className, startIndex, speed) {
-            this.classname = className
+            this.className = className
             this.startIndex = startIndex
+            this.currentIndex = startIndex
             this.speed = speed
             this.timerId = NaN
         }
     }
 
+//Individual Wraith properties
     wraiths = [
-        new Wraith('pete', 348, 250),
-        new Wraith('josh', 379, 250),
+        new Wraith('pete', 347, 250),
+        new Wraith('josh', 403, 250),
         new Wraith('kenny', 352, 500),
-        new Wraith('johnny', 376, 400)
+        new Wraith('johnny', 408, 400)
     ]
    
-
+//Add Wraiths to the grid via iteration
+    wraiths.forEach(wraith => {
+        squares[wraith.currentIndex].classList.add(wraith.className)
+        squares[wraith.currentIndex].classList.add('wraith')
+    })
 
 })
