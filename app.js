@@ -207,9 +207,20 @@ function movePillConsumer(e) {
     function moveWraith(wraith) {
         //Define the directions pe grid in an array to allow rando movement choices
         const directions = [-1, +1, width, -width]
+        //Direction is chosen based on random array direction, floored
         let direction = directions[Math.floor(Math.random() * directions.length)]
     }
+    //set the timerId to equal a interval set to the wraiths speed. 
     wraith.timerId = setInterval(function() {
+        //setup if statements to handle whether movement is allowed
+
+        //Left
+
+        //Up
+
+        //Right
+
+        //Down
 
     }, wraith.speed)
 
