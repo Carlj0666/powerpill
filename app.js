@@ -139,8 +139,8 @@ function movePillConsumer(e) {
 
     consumeDots();
     powerPillConsume();
-    //checkGameOver()
-    //checkGameWin()
+    checkEndGame();
+    checkWinGame();
 
     }
 
@@ -257,7 +257,32 @@ function movePillConsumer(e) {
             squares[wraith.currentIndex].classList.add(wraith.className, 'wraith')
         }
         //if it does remove the wraith and add points
-
+        checkEndGame();
     }, wraith.speed)
+}
+    //end game conditions check
+    function checkEndGame() {
+        //if there's a wraith in the pill consumers space 
+        if (squares[pillConsumerCurrentIndex].classList.contains('wraith')
+        //and the wraith is not freaked
+        && !squares[pillConsumerCurrentIndex].classList.contains('freaked-wraith')) {
+            //Stop wraith movement
+            wraiths.forEach(wraith => clearInterval(wraith.timerId))
+            //Disable pill consumer movement function
+            document.removeEventListener('keyup', movePillConsumer)
+            //Pause a moment and alert the game over
+            setTimeout(function(){alert('Everything Dies')
+            }, 666)   
+        }
     }
+
+    function checkWinGame() {
+        if (points === 274) {
+            wraiths.forEach(wraith => clearInterval(wraith.timerId))
+            document.removeEventListener('keyup', movePillConsumer) 
+            setTimeout(function(){alert('Everything Dies')
+            }, 666)
+        }
+    }
+
 })
