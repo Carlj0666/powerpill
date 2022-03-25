@@ -272,7 +272,7 @@ function movePillConsumer(e) {
             document.removeEventListener('keyup', movePillConsumer)
             //Pause a moment and alert the game over
             setTimeout(function(){alert('Everything Dies')
-            }, 666)   
+            }, 666);
         }
     }
 
@@ -281,7 +281,7 @@ function movePillConsumer(e) {
             wraiths.forEach(wraith => clearInterval(wraith.timerId))
             document.removeEventListener('keyup', movePillConsumer) 
             setTimeout(function(){alert('Everything Dies')
-            }, 666)
+            }, 666);
         }
     }
 
