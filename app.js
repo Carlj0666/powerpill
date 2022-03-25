@@ -219,7 +219,10 @@ function movePillConsumer(e) {
         if (!squares[wraith.currentIndex + direction].classList.contains('wall')
             && !squares[wraith.currentIndex + direction].classList.contains('wraith')) {
             //it's a valid wraith move
+            //remove the wraith from the current space
+            squares[wraith.currentIndex].classList.remove('wraith')
 
+                // wraith.direction = direction
             //Otherwise change direction
         } else direction = directions[Math.floor(Math.random() * directions.length)] 
 
