@@ -215,6 +215,15 @@ function movePillConsumer(e) {
         //setup if statements to handle whether movement is allowed
 
         //Left
+        //if the next possible square doesn't contain a wall, or ghost
+        if (!squares[wraith.currentIndex + direction].classList.contains('wall')
+            && !squares[wraith.currentIndex + direction].classList.contains('wraith')) {
+            //it's a valid wraith move
+
+            //Otherwise change direction
+        } else direction = directions[Math.floor(Math.random() * directions.length)] 
+
+        }
 
         //Up
 
@@ -223,5 +232,4 @@ function movePillConsumer(e) {
         //Down
 
     }, wraith.speed)
-
 })
