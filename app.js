@@ -246,6 +246,10 @@ function movePillConsumer(e) {
             squares[wraith.currentIndex].classList.add('freaked-wraith')
         }
 
+        //Check if the wraith is freaked and contains the pill consumer
+        
+        //if it does remove the wraith and add points
+
     }, wraith.speed)
     }
 })
