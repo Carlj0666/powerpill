@@ -11,6 +11,10 @@
     height: 20px;
 }
 
+.wraith-house {
+    background-color: darkgray;
+}
+
 .dots {
     background-color: black;
     border: 5px solid greenyellow;

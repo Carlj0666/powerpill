@@ -17,3 +17,4 @@ I'd love to incorporate some sound into this, perhaps based on movement, or some
 2) Music!
 3) Sound FX
 4) Level generator
+5) actual pixel art?

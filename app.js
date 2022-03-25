@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const pointsDisplay = document.getElementById('points');
-    const width = 28;
-    let points = 0;
-    const grid = document.querySelector('.grid');
+    const pointsDisplay = document.getElementById('points')
+    const width = 28
+    let points = 0
+    const grid = document.querySelector('.grid')
 
     //Layout key:
         // 0 - dots
@@ -43,17 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
 
 
-const squares = [];
+const squares = []
 
 function createMap() {
     //loop over the entire length of the layout array
     for (let i = 0; i < layout.length; i++) {
     //create a div for each element
-        const square = document.createElement('div');
+        const square = document.createElement('div')
     //add the divs - (squares) to the grid
-        grid.appendChild(square);
+        grid.appendChild(square)
     //add the dives to a new array
-        squares.push(square);
+        squares.push(square)
     //Use the layout to populate the board with the css styling
         //Layout key:
         // 0 - .dots
@@ -77,14 +77,14 @@ function createMap() {
 createMap()
 
 //Setup pill consumers starting position in the array
-let pillConsumerCurrentIndex = 489;
+let pillConsumerCurrentIndex = 489
 //Add the css styling to the array position index
 squares[pillConsumerCurrentIndex].classList.add('pill-consumer');
 
 //Movement
 function movePillConsumer(e) {
     //remove PCCI from the current grid section
-    squares[pillConsumerCurrentIndex].classList.remove('pill-consumer');
+    squares[pillConsumerCurrentIndex].classList.remove('pill-consumer')
     //use a switch to decide which new index to move to
     let currentKey = e.keyCode
     
@@ -102,7 +102,7 @@ function movePillConsumer(e) {
             if ((pillConsumerCurrentIndex -1) === 363) {
                 pillConsumerCurrentIndex = 391
             }
-            break
+            break;
 
         //up - keyCode 38
         case 38:
@@ -111,7 +111,7 @@ function movePillConsumer(e) {
             if (pillConsumerCurrentIndex - width >= 0 && !squares[pillConsumerCurrentIndex - width].classList.contains('wall')
             && !squares[pillConsumerCurrentIndex - width].classList.contains('wraith-house'))
             pillConsumerCurrentIndex -= width
-            break
+            break;
 
         //right - keyCode 39
         case 39:
@@ -124,28 +124,28 @@ function movePillConsumer(e) {
             if ((pillConsumerCurrentIndex +1) === 392) {
                 pillConsumerCurrentIndex = 364
             }
-            break
+            break;
 
         //down - keyCode 40
         case 40:
             //check if the current index location of pillCons plus width is less than or equal to width X width
             //AND doesn't have a class of 'wall' or 'wraith-house'
             if (pillConsumerCurrentIndex + width < width * width && !squares[pillConsumerCurrentIndex + width].classList.contains('wall')
-            && !squares[pillConsumerCurrentIndex + width].classList.contains('wraith-house'))
+            && !squares[pillConsumerCurrentIndex + width].classList.contains('wraith-house'));
             pillConsumerCurrentIndex += width
-            break
+            break;
     }
     squares[pillConsumerCurrentIndex].classList.add('pill-consumer');
 
-    consumeDots()
-    powerPillConsume()
+    consumeDots();
+    powerPillConsume();
     //removeScaries()
     //checkGameOver()
     //checkGameWin()
 
     }
 
-    document.addEventListener('keyup', movePillConsumer)
+    document.addEventListener('keyup', movePillConsumer);
 
 //Dot consume:
 //make dots dissappear
@@ -155,7 +155,7 @@ function movePillConsumer(e) {
         if (squares[pillConsumerCurrentIndex].classList.contains('dots')) {
             points ++
             pointsDisplay.innerHTML = points
-            squares[pillConsumerCurrentIndex].classList.remove('dots')
+            squares[pillConsumerCurrentIndex].classList.remove('dots');
         }
     }
 
@@ -165,13 +165,14 @@ function movePillConsumer(e) {
 //Remove scaries for power pill influenced pill consumer overlap ;
     function powerPillConsume() {
         if (squares[pillConsumerCurrentIndex].classList.contains('power-pill')) {
-            points+=3
+            points += 3
             pointsDisplay.innerHTML = points
-            squares[pillConsumerCurrentIndex].classList.remove('power-pill')
+            squares[pillConsumerCurrentIndex].classList.remove('power-pill');
             
         }
     }
 
+//WRAITHS!!!
 //Wraith Class
     class Wraith {
         constructor(className, startIndex, speed) {
@@ -194,7 +195,22 @@ function movePillConsumer(e) {
 //Add Wraiths to the grid via iteration
     wraiths.forEach(wraith => {
         squares[wraith.currentIndex].classList.add(wraith.className)
-        squares[wraith.currentIndex].classList.add('wraith')
-    })
+        squares[wraith.currentIndex].classList.add('wraith');
+    });
+
+//Wraith movement
+    //move all the wraiths
+    wraiths.forEach(wraith => moveWraith(wraith))
+    //width = 28
+
+    //Actual move function taking in Wraith arg
+    function moveWraith(wraith) {
+        //Define the directions pe grid in an array to allow rando movement choices
+        const directions = [-1, +1, width, -width]
+        let direction = directions[Math.floor(Math.random() * directions.length)]
+    }
+    wraith.timerId = setInterval(function() {
+
+    }, wraith.speed)
 
 })
