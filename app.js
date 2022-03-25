@@ -131,7 +131,7 @@ function movePillConsumer(e) {
             //check if the current index location of pillCons plus width is less than or equal to width X width
             //AND doesn't have a class of 'wall' or 'wraith-house'
             if (pillConsumerCurrentIndex + width < width * width && !squares[pillConsumerCurrentIndex + width].classList.contains('wall')
-            && !squares[pillConsumerCurrentIndex + width].classList.contains('wraith-house'));
+            && !squares[pillConsumerCurrentIndex + width].classList.contains('wraith-house'))
             pillConsumerCurrentIndex += width
             break;
     }
@@ -164,17 +164,26 @@ function movePillConsumer(e) {
 //add 3 to points for each dot that is "consumed"
 //Remove scaries for power pill influenced pill consumer overlap ;
     function powerPillConsume() {
+        //if the current space has a power pill
         if (squares[pillConsumerCurrentIndex].classList.contains('power-pill')) {
-            points += 3
-            wraiths.forEach(wraith => wraith.isFreaked = true)
-            setTimeout(unFreakWraiths, 10000)
-            pointsDisplay.innerHTML = points
+            //remove the powerpill
             squares[pillConsumerCurrentIndex].classList.remove('power-pill');
-            
+            //Add extra points
+            points += 3
+            //set the freaked out status of the wraiths to true
+            wraiths.forEach(wraith => wraith.isFreaked = true)
+            //set the timer for freaked out, then switch freaked status
+            setTimeout(unFreakWraiths, 10000)
+            //Update the points
+            pointsDisplay.innerHTML = points            
         }
     }
 
-    function 
+    //
+    function unFreakWraiths() {
+        wraiths.forEach(wraith => wraith.isFreaked = false)
+    }
+
 
 //WRAITHS!!!
 //Wraith Class
@@ -231,6 +240,12 @@ function movePillConsumer(e) {
 
             //Otherwise change direction
         } else direction = directions[Math.floor(Math.random() * directions.length)] 
+
+        //If the wraith is freaked, per power pill consumption, we add the isFreaked
+        if (wraith.isFreaked) {
+            squares[wraith.currentIndex].classList.add('freaked-wraith')
+        }
+
     }, wraith.speed)
     }
 })
