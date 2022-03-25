@@ -166,11 +166,15 @@ function movePillConsumer(e) {
     function powerPillConsume() {
         if (squares[pillConsumerCurrentIndex].classList.contains('power-pill')) {
             points += 3
+            wraiths.forEach(wraith => wraith.isFreaked = true)
+            setTimeout(unFreakWraiths, 10000)
             pointsDisplay.innerHTML = points
             squares[pillConsumerCurrentIndex].classList.remove('power-pill');
             
         }
     }
+
+    function 
 
 //WRAITHS!!!
 //Wraith Class
@@ -181,6 +185,7 @@ function movePillConsumer(e) {
             this.currentIndex = startIndex
             this.speed = speed
             this.timerId = NaN
+            this.isFreaked = false
         }
     }
 
@@ -214,7 +219,6 @@ function movePillConsumer(e) {
     wraith.timerId = setInterval(function() {
         //setup if statements to handle whether movement is allowed
 
-        //Left
         //if the next possible square doesn't contain a wall, or ghost
         if (!squares[wraith.currentIndex + direction].classList.contains('wall')
             && !squares[wraith.currentIndex + direction].classList.contains('wraith')) {
@@ -227,15 +231,6 @@ function movePillConsumer(e) {
 
             //Otherwise change direction
         } else direction = directions[Math.floor(Math.random() * directions.length)] 
-
-        
-
-        //Up
-
-        //Right
-
-        //Down
-
     }, wraith.speed)
     }
 })
