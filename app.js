@@ -76,6 +76,12 @@ function createMap() {
 
 createMap()
 
+    //get coordinates of Wraiths
+    function grabCoordinates(index) {
+        return [index % width, Math.floor(index / width)]
+    }
+
+
 //Setup pill consumers starting position in the array
 let pillConsumerCurrentIndex = 489
 //Add the css styling to the array position index
@@ -211,6 +217,11 @@ function movePillConsumer(e) {
         squares[wraith.currentIndex].classList.add('wraith');
     });
 
+    // //get coordinates of Wraiths
+    // function grabCoordinates(index) {
+    //     return [index % width, Math.floor(index / width)]
+    // }
+
 //Wraith movement
     //move all the wraiths
     wraiths.forEach(wraith => moveWraith(wraith))
@@ -223,22 +234,72 @@ function movePillConsumer(e) {
         //Direction is chosen based on random array direction, floored
         let direction = directions[Math.floor(Math.random() * directions.length)]
     
-    //set the timerId to equal a interval set to the wraiths speed. 
-    wraith.timerId = setInterval(function() {
+        //set the timerId to equal a interval set to the wraiths speed. 
+        wraith.timerId = setInterval(function() {
         //setup if statements to handle whether movement is allowed
 
         //if the next possible square doesn't contain a wall, or ghost
-        if (!squares[wraith.currentIndex + direction].classList.contains('wall')
-            && !squares[wraith.currentIndex + direction].classList.contains('wraith')) {
+        if (!squares[wraith.currentIndex + direction].classList.contains('wraith')
+            && !squares[wraith.currentIndex + direction].classList.contains('wall')) {
             //it's a valid wraith move
             //remove the wraith from the current space
-            squares[wraith.currentIndex].classList.remove(wraith.className, 'wraith', 'freaked-wraith')
+            squares[wraith.currentIndex].classList.remove(wraith.className)
+            squares[wraith.currentIndex].classList.remove('wraith', 'wraith', 'freaked-wraith')
+
+            //<< SMART MOVEMENT LOGIC >>
+            //grab the wraith coordinates and save to variable
+            // const [wraithX, wraithY] = grabCoordinates(wraith.currentIndex)
+            // console.log("wraith current I: " + [wraithX, wraithY])
+            // //grab the pillConsumer coordinates and save to variable
+            // const [pillConsumerX, pillConsumerY] = grabCoordinates(pillConsumerCurrentIndex)
+            // console.log("Pill Cons current I: " + [pillConsumerX, pillConsumerY])
+            // //grab the wraith next coordinates and save to variable
+            // const [wraithNextX, wraithNextY] = grabCoordinates(wraith.currentIndex + direction)
+            // console.log("wraith NEXT I: " + [wraithNextX, wraithNextY])
+
+            // //Check if the X coordinate is closer
+            // function isXCoordCloser() {
+            //     //if the NEXT X coord OF WRAITH - pillCons is more than the actual coord of both
+            //     if ((wraithNextX - pillConsumerX) > (wraithX - pillConsumerX)) {
+            //         console.log("X coord closer = TRUE")
+            //         return true;
+            //     } else {
+            //         console.log("X coord closer = FALSE")
+            //         return false;
+            //     }
+            // }
+            // //Check if the X coordinate is closer
+            // function isYCoordCloser() {
+            //     //if the NEXT Y coord OF WRAITH - pillCons is more than the actual coord of both
+            //     if ((wraithNextY - pillConsumerY) > (wraithY - pillConsumerY)) {
+            //         console.log("Y coord closer = TRUE")
+            //         return true;
+            //     } else {
+            //         console.log("Y coord closer = TRUE")
+            //         return false;
+            //     }
+            // }
+
+        //     if (isXCoordCloser() || isYCoordCloser()) {
+        //         wraith.currentIndex += direction
+        //         squares[wraith.currentIndex].classList.add('wraith')
+        //     } else {
+
+        //         squares[wraith.currentIndex].classList.add('wraith')
+        //         direction = directions[Math.floor(Math.random() * directions.length)]
+        //     }
+        //     squares[wraith.currentIndex].classList.add('wraith')
+        // } else direction = directions[Math.floor(Math.random() * directions.length)]
+
+
+            //<< SMART MOVEMENT LOGIC >>
+
             //move    
             wraith.currentIndex += direction
             squares[wraith.currentIndex].classList.add(wraith.className, 'wraith')
 
             //Otherwise change direction
-        } else direction = directions[Math.floor(Math.random() * directions.length)] 
+        } else direction = directions[Math.floor(Math.random() * directions.length)]
 
         //If the wraith is freaked, per power pill consumption, we add the isFreaked
         if (wraith.isFreaked) {
@@ -252,7 +313,7 @@ function movePillConsumer(e) {
             //reset to the starting index for the wraith
             wraith.currentIndex = wraith.startIndex
             //Add to the points
-            points += 93
+            points += 100
             //Re-add the classlist class name to the wraith
             squares[wraith.currentIndex].classList.add(wraith.className, 'wraith')
         }
@@ -260,6 +321,7 @@ function movePillConsumer(e) {
         checkEndGame();
     }, wraith.speed)
 }
+// moveWraith();
     //end game conditions check
     function checkEndGame() {
         //if there's a wraith in the pill consumers space 
@@ -285,4 +347,7 @@ function movePillConsumer(e) {
         }
     }
 
+
+
 })
+
