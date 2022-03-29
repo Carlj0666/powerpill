@@ -161,6 +161,7 @@ function movePillConsumer(e) {
             points ++
             pointsDisplay.innerHTML = points
             squares[pillConsumerCurrentIndex].classList.remove('dots');
+            squares[pillConsumerCurrentIndex].classList.add('empty')
         }
     }
 
@@ -342,7 +343,7 @@ function movePillConsumer(e) {
         if (points === 274) {
             wraiths.forEach(wraith => clearInterval(wraith.timerId))
             document.removeEventListener('keyup', movePillConsumer) 
-            setTimeout(function(){alert('Everything Dies')
+            setTimeout(function(){alert('You live')
             }, 666);
         }
     }

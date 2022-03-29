@@ -6,6 +6,7 @@
 html * {
     font-size: 6rem;
     color: #00fa9a;
+    background-color: black;
 }
 
 .grid {
@@ -13,7 +14,8 @@ html * {
     flex-wrap: wrap;
     width: 560px;
     height: 560px;
-    border: solid black;
+    border: solid white;
+    background-color: grey;
 }
 
 .grid div {
@@ -27,9 +29,17 @@ html * {
 
 .dots {
     background-color: black;
-    border: 5px solid greenyellow;
-    border-radius: 10px;
-    border-block-color: greenyellow;
+    border: 4px solid #00cc66;
+    border-radius: 20px;
+    border-block-color: white;
+    border-block-width: 4px;
+    box-sizing: border-box;
+}
+
+.empty {
+    background-color: #001a00;
+    border: .5px solid #00cc66;
+    border-radius: 0px;
     box-sizing: border-box;
 }
 
@@ -63,13 +73,16 @@ html * {
 }
 
 .freaked-wraith {
-    background-color:mediumvioletred;
+    background-color: #66ccff
+    ;
     border: 0px;
 }
 
 
 .pill-consumer {
-    background-color: cornflowerblue;
+    background-color: black;
     border-radius: 10px;
+    border-width: 2px;
+    border-color: #00cc66;
 }
 
