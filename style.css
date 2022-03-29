@@ -1,3 +1,13 @@
+/* @font-face {
+    font-family: "Custom";
+    src: local("/open_24_display_st/Open 24 Display St.ttf");
+} */
+
+html * {
+    font-size: 6rem;
+    color: #00fa9a;
+}
+
 .grid {
     display: flex;
     flex-wrap: wrap;
