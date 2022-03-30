@@ -76,13 +76,17 @@ function createMap() {
 
 createMap()
 
+    //get coordinates of Wraiths
+    function grabCoordinates(index) {
+        return [index % width, Math.floor(index / width)]
+    }
+
 
 //Setup pill consumers starting position in the array
 let pillConsumerCurrentIndex = 489
 //Add the css styling to the array position index
 squares[pillConsumerCurrentIndex].classList.add('pill-consumer');
 
-document.getElementById("restart").addEventListener("click", function() {
 //Movement
 function movePillConsumer(e) {
     //remove PCCI from the current grid section
@@ -171,7 +175,7 @@ function movePillConsumer(e) {
             //remove the powerpill
             squares[pillConsumerCurrentIndex].classList.remove('power-pill');
             //Add extra points
-            points += 7
+            points += 3
             //set the freaked out status of the wraiths to true
             wraiths.forEach(wraith => wraith.isFreaked = true)
             //set the timer for freaked out, then switch freaked status
@@ -199,73 +203,75 @@ function movePillConsumer(e) {
             this.isFreaked = false
         }
     }
-
-//Individual Wraith properties
-    wraiths = [
-        new Wraith('pete', 347, 250),
-        new Wraith('josh', 403, 250),
-        new Wraith('kenny', 352, 500),
-        new Wraith('johnny', 408, 400)
-    ]
+    let wraithCurrentIndex = 347
+    squares[wraithCurrentIndex].classList.add('wraith')
+// //Individual Wraith properties
+//     wraiths = [
+//         new Wraith('pete', 347, 250),
+//         new Wraith('josh', 403, 250),
+//         new Wraith('kenny', 352, 500),
+//         new Wraith('johnny', 408, 400)
+//     ]
    
-//Add Wraiths to the grid via iteration
-    wraiths.forEach(wraith => {
-        squares[wraith.currentIndex].classList.add(wraith.className)
-        squares[wraith.currentIndex].classList.add('wraith');
-    });
+// //Add Wraiths to the grid via iteration
+//     wraiths.forEach(wraith => {
+//         squares[wraith.currentIndex].classList.add(wraith.className)
+//         squares[wraith.currentIndex].classList.add('wraith');
+//     });
 
-//Wraith movement
-    //move all the wraiths
-    wraiths.forEach(wraith => moveWraith(wraith))
-    //width = 28
+    // //get coordinates of Wraiths
+    function grabCoordinates(index) {
+        return [index % width, Math.floor(index / width)]
+    }
 
-    //Actual move function taking in Wraith arg
-    function moveWraith(wraith) {
-        //Define the directions pe grid in an array to allow rando movement choices
-        const directions = [-1, +1, width, -width]
-        //Direction is chosen based on random array direction, floored
-        let direction = directions[Math.floor(Math.random() * directions.length)]
-    
-        //set the timerId to equal a interval set to the wraiths speed. 
-        wraith.timerId = setInterval(function() {
-        //setup if statements to handle whether movement is allowed
+  //move 
+  function moveWraith() {
 
-        //if the next possible square doesn't contain a wall, or ghost
-        if (!squares[wraith.currentIndex + direction].classList.contains('wraith')
-            && !squares[wraith.currentIndex + direction].classList.contains('wall')) {
-            //it's a valid wraith move
-            //remove the wraith from the current space
-            squares[wraith.currentIndex].classList.remove(wraith.className)
-            squares[wraith.currentIndex].classList.remove('wraith', 'wraith', 'freaked-wraith')
+    const directions =  [-1, +1, +width, -width]
+    let wraithTimerId  = NaN
+    let direction = directions[Math.floor(Math.random() * directions.length)]
 
-            //move    
-            wraith.currentIndex += direction
-            squares[wraith.currentIndex].classList.add(wraith.className, 'wraith')
+    wraithTimerId = setInterval(function() {
+      if  (!squares[wraithCurrentIndex + direction].classList.contains('wall')) {
+          //remove the ghosts classes
+          squares[wraithCurrentIndex].classList.remove('pete')
+          //move into that space
 
-            //Otherwise change direction
+          const [peteX, peteY] = grabCoordinates(wraithCurrentIndex)
+          const [pillConsumerX, pillConsumerY] = grabCoordinates(pillConsumerCurrentIndex)
+          const [peteNextX, peteNextY] = grabCoordinates(wraithCurrentIndex + direction)
+
+          function isXCoordCloser() {
+            if ((peteNextX - pillConsumerX) > (peteX - pillConsumerX)){
+              return true
+            } else return false
+         }
+
+          function isYCoordCloser() {
+            if ((peteNextY - pillConsumerY) > (peteY - pillConsumerY)) {
+              return true
+            } else return false
+          }
+          if (isXCoordCloser() || isYCoordCloser()) {
+            wraithCurrentIndex += direction
+            squares[wraithCurrentIndex].classList.add('pete')
+
+          } else {
+            squares[wraithCurrentIndex].classList.add('pete')
+            direction = directions[Math.floor(Math.random() * directions.length)]
+        }
+        squares[wraithCurrentIndex].classList.add('pete')
         } else direction = directions[Math.floor(Math.random() * directions.length)]
 
-        //If the wraith is freaked, per power pill consumption, we add the isFreaked
-        if (wraith.isFreaked) {
-            squares[wraith.currentIndex].classList.add('freaked-wraith')
-        }
+      if(squares[wraithCurrentIndex].classList.contains('pac-man')) clearInterval(wraithTimerId)
 
-        //Check if the wraith is freaked and contains the pill consumer
-        if (wraith.isFreaked && squares[wraith.currentIndex].classList.contains('pill-consumer')) {
-            //remove the wraith/freaked wraith at the index classNames
-            squares[wraith.currentIndex].classList.remove(wraith.className, 'wraith', 'freaked-wraith')
-            //reset to the starting index for the wraith
-            wraith.currentIndex = wraith.startIndex
-            //Add to the points
-            points += 100
-            //Re-add the classlist class name to the wraith
-            squares[wraith.currentIndex].classList.add(wraith.className, 'wraith')
-        }
-        //if it does remove the wraith and add points
-        checkEndGame();
-    }, wraith.speed)
-}
-// moveWraith();
+    }, 300)
+  }
+
+
+  moveWraith()
+
+
     //end game conditions check
     function checkEndGame() {
         //if there's a wraith in the pill consumers space 
@@ -291,8 +297,7 @@ function movePillConsumer(e) {
         }
     }
 
-
-
 })
-});
+
+
 

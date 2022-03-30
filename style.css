@@ -1,10 +1,7 @@
-/* @font-face {
-    font-family: "Custom";
-    src: local("/open_24_display_st/Open 24 Display St.ttf");
-} */
+
 
 html * {
-    font-size: 6rem;
+    font-size: 3rem;
     color: #00fa9a;
     background-color: black;
 }
@@ -37,8 +34,8 @@ html * {
 }
 
 .empty {
-    background-color: #001a00;
-    border: .5px solid #00cc66;
+    background-color: #000700;
+    /* border: .5px solid #00cc66; */
     border-radius: 0px;
     box-sizing: border-box;
 }
