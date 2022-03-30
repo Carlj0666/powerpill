@@ -82,7 +82,7 @@ let pillConsumerCurrentIndex = 489
 //Add the css styling to the array position index
 squares[pillConsumerCurrentIndex].classList.add('pill-consumer');
 
-document.getElementById("restart").addEventListener("click", function() {
+
 //Movement
 function movePillConsumer(e) {
     //remove PCCI from the current grid section
@@ -265,6 +265,7 @@ function movePillConsumer(e) {
         checkEndGame();
     }, wraith.speed)
 }
+
 // moveWraith();
     //end game conditions check
     function checkEndGame() {
@@ -294,5 +295,5 @@ function movePillConsumer(e) {
 
 
 })
-});
+
 
