@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const pointsDisplay = document.getElementById('points')
     const width = 28

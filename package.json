@@ -1,0 +1,22 @@
+{
+  "name": "powerpill",
+  "version": "1.0.0",
+  "description": "Powerpill - just a game built with JS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Carlj0666/powerpill.git"
+  },
+  "author": "Carl J",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Carlj0666/powerpill/issues"
+  },
+  "homepage": "https://github.com/Carlj0666/powerpill#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
