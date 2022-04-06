@@ -5,9 +5,9 @@ const app = express();
 
 app.use(express.static(__dirname + '/'));
 
-app.use('*', (req,res) =>{
-    res.sendFile(path.join(__dirname + '/../dist/index.html'));
-});
+// app.use('*', (req,res) =>{
+//     res.sendFile(path.join(__dirname + '/../dist/index.html'));
+// });
   
 const port = 3000;
 
