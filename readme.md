@@ -23,6 +23,7 @@ X) Music!
 3) Sound FX
 4) Level generator!
 5) actual pixel art? hmm.
+6) Add mobile touch controls
 
 # Music
 (SHAMELESS PLUG) All music was made by myself Carl Jehle w/and/or my good friend and occassional bandmate Micah Boyd as a collaborative project called BORED GAME MUSIC (boredgamemusic@gmail.com) if you are interested in licensing, or having new music, sound design or otherwise for an kind of project.

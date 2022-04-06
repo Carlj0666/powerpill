@@ -100,7 +100,6 @@ function movePillConsumer(e) {
             if (pillConsumerCurrentIndex % width !== 0 && !squares[pillConsumerCurrentIndex -1].classList.contains('wall') 
             && !squares[pillConsumerCurrentIndex -1].classList.contains('wraith-house'))
             pillConsumerCurrentIndex -= 1
-            
 
         //check if pillConsumer is at the Left Exit
             if ((pillConsumerCurrentIndex -1) === 363) {
