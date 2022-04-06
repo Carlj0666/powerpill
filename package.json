@@ -18,5 +18,8 @@
   "homepage": "https://github.com/Carlj0666/powerpill#readme",
   "dependencies": {
     "express": "^4.17.3"
+  },
+  "engines": {
+    "node": "16.13.1"
   }
 }
