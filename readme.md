@@ -20,6 +20,7 @@ I am seeing some odd behavior in terms of the Pill Consumer not always consuming
 0) Better wraiths (not rando movement) SEE APP2.js for commented out logic notes, experimentation.
 1) Latching movement?
 X) Music!
+    A) Working on Howler integration
 3) Sound FX
 4) Level generator!
 5) actual pixel art? hmm.
