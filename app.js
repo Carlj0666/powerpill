@@ -286,13 +286,15 @@ function movePillConsumer(e) {
     }
 
     function checkWinGame() {
-        if (points === 300) {
+        if (points === 278) {
             wraiths.forEach(wraith => clearInterval(wraith.timerId))
             document.removeEventListener('keyup', movePillConsumer) 
             setTimeout(function(){alert('You live')
             }, 666);
         }
+        console.log(points)
     }
+    
 
 })
 

@@ -38,15 +38,29 @@ html * {
     /* border: .5px solid #00cc66; */
     border-radius: 0px;
     box-sizing: border-box;
+    animation: blinkingEmpty 3s 1;
+}
+
+@keyframes blinkingEmpty{
+    0%		{ background-color: red;}
+    25%		{ background-color:darkred;}
+    25%		{ background-color:maroon;}
 }
 
 .wall {
     background-color:black;
 }
 
+
+
 .power-pill {
     background-color: black;
     border-radius: 10px;
+    animation: blinkingPowerpill 2s infinite;
+}
+
+@keyframes blinkingPowerpill{
+    0%		{ background-color: #10c018;}
 }
 
 .pete {
@@ -81,5 +95,11 @@ html * {
     border-radius: 10px;
     border-width: 2px;
     border-color: #00cc66;
+    animation: blinkingPillConsumer 1s infinite;
+}
+
+@keyframes blinkingPillConsumer{
+    25%		{ background-color: #10c018;}
+    10%		{ background-color: white;}
 }
 
