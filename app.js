@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             src: [
                 './sounds/cartoon-jump-6462.mp3'
             ],
-            volume: 0.25
+            volume: 0.15
         })
     }
 
