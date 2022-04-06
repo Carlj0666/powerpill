@@ -4,6 +4,7 @@ html * {
     font-size: 2rem;
     color: #00fa9a;
     background-color: black;
+    orientation: portrait;
 }
 
 
