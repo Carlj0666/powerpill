@@ -1,10 +1,18 @@
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const pointsDisplay = document.getElementById('points')
     const width = 28
     let points = 0
     const grid = document.querySelector('.grid')
+
+    const sfx = {
+        push: new Howl({
+            src: [
+                './sounds/cartoon-jump-6462.mp3'
+            ],
+            volume: 0.25
+        })
+    }
 
     //Layout key:
         // 0 - dots
@@ -99,7 +107,9 @@ function movePillConsumer(e) {
             //AND doesn't have a class of 'wall' AND 'wraith-house'
             if (pillConsumerCurrentIndex % width !== 0 && !squares[pillConsumerCurrentIndex -1].classList.contains('wall') 
             && !squares[pillConsumerCurrentIndex -1].classList.contains('wraith-house'))
+            
             pillConsumerCurrentIndex -= 1
+            sfx.push.play();
 
         //check if pillConsumer is at the Left Exit
             if ((pillConsumerCurrentIndex -1) === 363) {
@@ -111,9 +121,12 @@ function movePillConsumer(e) {
         case 38:
             //check if the current index location of pillCons minus width is less than or equal to 0
             //AND doesn't have a class of 'wall' or 'wraith-house'
+            sfx.p
             if (pillConsumerCurrentIndex - width >= 0 && !squares[pillConsumerCurrentIndex - width].classList.contains('wall')
             && !squares[pillConsumerCurrentIndex - width].classList.contains('wraith-house'))
+            
             pillConsumerCurrentIndex -= width
+            sfx.push.play();
             break;
 
         //right - keyCode 39
@@ -122,7 +135,9 @@ function movePillConsumer(e) {
             //AND doesn't have a class of 'wall' or 'wraith-house'
             if (pillConsumerCurrentIndex % width < width -1 && !squares[pillConsumerCurrentIndex +1].classList.contains('wall')
             && !squares[pillConsumerCurrentIndex + 1].classList.contains('wraith-house'))
+            
             pillConsumerCurrentIndex += 1
+            sfx.push.play();
 
             if ((pillConsumerCurrentIndex +1) === 392) {
                 pillConsumerCurrentIndex = 364
@@ -135,7 +150,9 @@ function movePillConsumer(e) {
             //AND doesn't have a class of 'wall' or 'wraith-house'
             if (pillConsumerCurrentIndex + width < width * width && !squares[pillConsumerCurrentIndex + width].classList.contains('wall')
             && !squares[pillConsumerCurrentIndex + width].classList.contains('wraith-house'))
+            
             pillConsumerCurrentIndex += width
+            sfx.push.play();
             break;
     }
     squares[pillConsumerCurrentIndex].classList.add('pill-consumer');
